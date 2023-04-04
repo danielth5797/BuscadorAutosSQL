@@ -1,0 +1,62 @@
+CREATE TABLE auto (
+id_Auto BIGINT PRIMARY KEY IDENTITY (1,1) NOT NULL,
+kilometraje INT NOT NULL
+);
+
+DROP TABLE dbo.auto;
+
+CREATE TABLE marca (
+id_Marca BIGINT PRIMARY KEY IDENTITY (1,1) NOT NULL,
+marca VARCHAR(30) NOT NULL,
+modelo VARCHAR(30) NOT NULL,
+precio int NOT NULL
+);
+
+CREATE TABLE estilo (
+id_Estilo BIGINT PRIMARY KEY IDENTITY (1,1) NOT NULL,
+estilo VARCHAR(30) NOT NULL
+);
+
+CREATE TABLE combustible (
+id_Combustible BIGINT PRIMARY KEY IDENTITY (1,1) NOT NULL,
+combustible VARCHAR(30) NOT NULL
+);
+
+CREATE TABLE transmision (
+id_Transmision BIGINT PRIMARY KEY IDENTITY (1,1) NOT NULL,
+transmision VARCHAR(30) NOT NULL
+);
+
+CREATE TABLE color (
+id_Color BIGINT PRIMARY KEY IDENTITY (1,1) NOT NULL,
+color VARCHAR(30) NOT NULL
+);
+
+CREATE TABLE cilindrada (
+id_Cilindrada BIGINT PRIMARY KEY IDENTITY (1,1) NOT NULL,
+cilindrada VARCHAR(30) NOT NULL
+);
+
+CREATE TABLE anio (
+id_Anio BIGINT PRIMARY KEY IDENTITY (1,1) NOT NULL,
+anio VARCHAR(30) NOT NULL
+);
+
+CREATE TABLE coche (
+id_Auto BIGINT PRIMARY KEY IDENTITY (1,1) NOT NULL,
+id_Marca BIGINT NOT NULL,
+id_Estilo BIGINT NOT NULL,
+id_Combustible BIGINT NOT NULL,
+id_Transmision BIGINT NOT NULL,
+id_Color BIGINT NOT NULL,
+id_Cilindrada BIGINT NOT NULL,
+id_Anio BIGINT NOT NULL,
+
+CONSTRAINT fk_id_Marca FOREIGN KEY (id_Marca) REFERENCES dbo.marca (id_Marca),
+CONSTRAINT fk_id_Estilo FOREIGN KEY (id_Estilo) REFERENCES dbo.estilo (id_Estilo),
+CONSTRAINT fk_id_Combustible FOREIGN KEY (id_Combustible) REFERENCES dbo.combustible (id_Combustible),
+CONSTRAINT fk_id_Transimision FOREIGN KEY (id_Transmision) REFERENCES dbo.transmision (id_Transmision),
+CONSTRAINT fk_id_Color FOREIGN KEY (id_Color) REFERENCES dbo.color (id_Color),
+CONSTRAINT fk_id_Cilindrada FOREIGN KEY (id_Cilindrada) REFERENCES dbo.cilindrada (id_Cilindrada),
+CONSTRAINT fk_id_Anio FOREIGN KEY (id_Anio) REFERENCES dbo.anio (id_Anio)
+);
